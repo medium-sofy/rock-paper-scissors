@@ -51,6 +51,8 @@ else if (player = scissors && computer = paper){
 	return 'you win! ${playerSelection beats Paper!}'
 }
 */
+let playerScore = 0
+let computerScore = 0
 function playRound(playerSelection, computerSelection){
 	
 	playerInsensitive = playerSelection.toLowerCase() // converts playerSelection to lower case, to make it case-insensitive.
@@ -59,23 +61,40 @@ function playRound(playerSelection, computerSelection){
 		return "It's a Draw!"
 	}
 	else if (playerInsensitive === 'rock' && computerSelection === 'paper'){
+		computerScore++
 		return `You lose! Paper beats ${playerSelection}`
 	}
 	else if(playerInsensitive === 'rock' && computerSelection === 'scissors'){
+		playerScore++
 		return `You win! ${playerSelection} beats scissors!`
 	}
 	else if(playerInsensitive === 'paper' && computerSelection=== 'rock'){
+		playerScore++
 		return `You win! ${playerSelection} beats rock`
 	}
 	else if(playerInsensitive === 'paper' && computerSelection === 'scissors'){
+		computerScore++
 		return `You lose! Scissors beats ${playerSelection}`
 	}
 	else if (playerInsensitive === 'scissors' && computerSelection === 'rock'){
+		computerScore++
 		return `You lose! Rock beats ${playerSelection}`
 	}
 	else if (playerInsensitive === 'scissors' && computerSelection === 'paper'){
+		playerScore++
 		return `You win! ${playerSelection} beats paper!`
 	}
 }
 
-//function game(){}
+/*function game(){
+	for(let i = 0; i < 5; i++){
+		playerSelection = prompt("Rock, Paper, or Scissors?")
+		console.log(playRound(playerSelection,getComputerSelection()))
+	}
+	if (playerScore < computerScore){
+		console.log("You lost the game! your score is ${playerScore}, and the computer score is ${computerScore]")
+	}
+	else{
+		console.log("You won the game! your score is ${playerScore}, and the computer score is ${computerScore]")
+	}
+}*/
