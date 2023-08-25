@@ -6,5 +6,8 @@ check if generated number equals any choice value, if true, return that choice.
 */
 
 function getRandomInt(int = 3){ //Returns a random integer in the range 0 to < int, defaults to 3.
-	return math.floor(math.random() * int)
+	return Math.floor(Math.random() * int)
 }
+//function getComputerChoice(){}
+//function playRound(){}
+//function game(){}
