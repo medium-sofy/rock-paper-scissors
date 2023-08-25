@@ -1,4 +1,5 @@
 /*
+Date: Aug/25th 2023
 plan: assign a number to each possible choice, 
 eg: rock = 0, paper = 1, and scissors = 2,
 use math.floor(math.random() * 3) to get a random number in the range 0 to 2, 
@@ -14,7 +15,7 @@ function getComputerChoice(){ //Returns either 'Rock', 'Paper', or 'Scissors'
 	let paper = 1 
 	let scissors = 2
 
-	let choice = getRandomInt()	
+	let choice = getRandomInt()	// Either: 0, 1, or 2
 	if(choice === 0){
 		return 'rock'
 	}
@@ -51,9 +52,11 @@ else if (player = scissors && computer = paper){
 	return 'you win! ${playerSelection beats Paper!}'
 }
 */
+
 let playerScore = 0
 let computerScore = 0
-function playRound(playerSelection, computerSelection){
+
+function playRound(playerSelection, computerSelection){ // Playes a single round and determines the winner based on player and computer selections
 	
 	playerInsensitive = playerSelection.toLowerCase() // converts playerSelection to lower case, to make it case-insensitive.
 	
@@ -86,15 +89,21 @@ function playRound(playerSelection, computerSelection){
 	}
 }
 
-/*function game(){
-	for(let i = 0; i < 5; i++){
+function game(){
+
+	for(let i = 0; i < 5; i++){ // Main game loop, plays a game of 5 rounds
 		playerSelection = prompt("Rock, Paper, or Scissors?")
-		console.log(playRound(playerSelection,getComputerSelection()))
+		console.log(playRound(playerSelection,getComputerChoice()))
 	}
+
 	if (playerScore < computerScore){
-		console.log("You lost the game! your score is ${playerScore}, and the computer score is ${computerScore]")
+		console.log(`You lost the game! your score is ${playerScore}, and the computer score is ${computerScore}.`)
 	}
-	else{
-		console.log("You won the game! your score is ${playerScore}, and the computer score is ${computerScore]")
-	}
-}*/
+	else if (playerScore > computerScore){
+		console.log(`You won the game! your score is ${playerScore}, and the computer score is ${computerScore}.`)
+	}else(
+		console.log(`The game ended with a draw! your score is ${playerScore}, and the computer score is ${computerScore}.`)
+	)
+}
+
+game() // Main Function Call 
