@@ -91,19 +91,12 @@ function playRound(playerSelection, computerSelection){ // Playes a single round
 
 function game(){
 
-	for(let i = 0; i < 5; i++){ // Main game loop, plays a game of 5 rounds
-		playerSelection = prompt("Rock, Paper, or Scissors?")
-		console.log(playRound(playerSelection,getComputerChoice()))
-	}
+	const rock = document.querySelector('#rock')
+	const paper = document.querySelector('#paper')
+	const scissors = document.querySelector('#scissors')
 
-	if (playerScore < computerScore){
-		console.log(`You lost the game! your score is ${playerScore}, and the computer score is ${computerScore}.`)
-	}
-	else if (playerScore > computerScore){
-		console.log(`You won the game! your score is ${playerScore}, and the computer score is ${computerScore}.`)
-	}else(
-		console.log(`The game ended with a draw! your score is ${playerScore}, and the computer score is ${computerScore}.`)
-	)
+	rock.addEventListener('click',()=>{console.log(playRound('rock',getComputerChoice()))})
+	paper.addEventListener('click',()=>{console.log(playRound('paper',getComputerChoice()))})
+	scissors.addEventListener('click',()=>{console.log(playRound('scissors',getComputerChoice()))})
 }
-
-//game() // Main Function Call 
+game() // Main Function Call 
