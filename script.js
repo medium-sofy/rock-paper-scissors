@@ -55,66 +55,68 @@ else if (player = scissors && computer = paper){
 
 let playerScore = 0
 let computerScore = 0
+let gameActive = true
 const resultContainer = document.querySelector('#results-container')
 const playerScoreContainer = document.querySelector('#player-score')
 const computerScoreContainer = document.querySelector('#computer-score')
+const announcementContainer = document.querySelector('#winner-announce')
 
 function playRound(playerSelection, computerSelection){ // Playes a single round and determines the winner based on player and computer selections
-	
+	if(gameActive === false) return;
 	playerInsensitive = playerSelection.toLowerCase() // converts playerSelection to lower case, to make it case-insensitive.
 	
 	if(playerInsensitive === computerSelection){
 		resultContainer.textContent="It's a Draw!"
 		playerScoreContainer.textContent=`Player score: ${playerScore}`
 	    computerScoreContainer.textContent=`Computer Score: ${computerScore}`
-		return "It's a Draw!"
 	}
 	else if (playerInsensitive === 'rock' && computerSelection === 'paper'){
 		computerScore++
 		resultContainer.textContent=`You lose! Paper beats ${playerSelection}`
 		playerScoreContainer.textContent=`Player score: ${playerScore}`
 	    computerScoreContainer.textContent=`Computer Score: ${computerScore}`
-		return `You lose! Paper beats ${playerSelection}`
 	}
 	else if(playerInsensitive === 'rock' && computerSelection === 'scissors'){
 		playerScore++
 		resultContainer.textContent=`You win! ${playerSelection} beats scissors!`
 		playerScoreContainer.textContent=`Player score: ${playerScore}`
 	    computerScoreContainer.textContent=`Computer Score: ${computerScore}`
-		return `You win! ${playerSelection} beats scissors!`
 	}
 	else if(playerInsensitive === 'paper' && computerSelection=== 'rock'){
 		playerScore++
 		resultContainer.textContent=`You win! ${playerSelection} beats rock`
 		playerScoreContainer.textContent=`Player score: ${playerScore}`
 	    computerScoreContainer.textContent=`Computer Score: ${computerScore}`
-		return `You win! ${playerSelection} beats rock`
 	}
 	else if(playerInsensitive === 'paper' && computerSelection === 'scissors'){
 		computerScore++
 		resultContainer.textContent=`You lose! Scissors beats ${playerSelection}`
 		playerScoreContainer.textContent=`Player score: ${playerScore}`
 	    computerScoreContainer.textContent=`Computer Score: ${computerScore}`
-		return `You lose! Scissors beats ${playerSelection}`
 	}
 	else if (playerInsensitive === 'scissors' && computerSelection === 'rock'){
 		computerScore++
 		resultContainer.textContent=`You lose! Rock beats ${playerSelection}`
 		playerScoreContainer.textContent=`Player score: ${playerScore}`
 	    computerScoreContainer.textContent=`Computer Score: ${computerScore}`
-		return `You lose! Rock beats ${playerSelection}`
 	}
 	else if (playerInsensitive === 'scissors' && computerSelection === 'paper'){
 		playerScore++
 		resultContainer.textContent=`You win! ${playerSelection} beats paper!`
 		playerScoreContainer.textContent=`Player score: ${playerScore}`
 	    computerScoreContainer.textContent=`Computer Score: ${computerScore}`
-		return `You win! ${playerSelection} beats paper!`
+	}
+	if(playerScore === 5){
+		announcementContainer.textContent=`You won the game! Reload the page to play again.`
+		gameActive = false
+	}
+	else if (computerScore === 5){
+		announcementContainer.textContent=`You lost the game! Reload the page to play again.`
+		gameActive = false
 	}
 }
 
 function game(){
-
 	const rock = document.querySelector('#rock')
 	const paper = document.querySelector('#paper')
 	const scissors = document.querySelector('#scissors')
